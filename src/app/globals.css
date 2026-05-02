@@ -1,26 +1,80 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+/* Custom Theme Colors for Tiles Gallery */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f6f3;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --primary: #2d2926;
+  --primary-foreground: #ffffff;
+  --secondary: #e8e4df;
+  --secondary-foreground: #2d2926;
+  --muted: #f0ebe5;
+  --muted-foreground: #6b6b6b;
+  --accent: #c9a87c;
+  --accent-foreground: #1a1a1a;
+  --border: #e0dcd6;
+  --ring: #c9a87c;
+  --radius: 0.5rem;
+}
+
+/* DaisyUI Custom Theme */
+[data-theme="tiles"] {
+  --p: 45 24 44; /* Primary - warm brown */
+  --pf: 35 24 34; /* Primary focus */
+  --pc: 100 0 0; /* Primary content */
+  --s: 40 6 88; /* Secondary - cream */
+  --sf: 40 8 82; /* Secondary focus */
+  --sc: 45 24 20; /* Secondary content */
+  --a: 35 40 70; /* Accent - golden */
+  --af: 35 45 60; /* Accent focus */
+  --ac: 45 24 15; /* Accent content */
+  --n: 45 10 20; /* Neutral - dark brown */
+  --nf: 45 12 15; /* Neutral focus */
+  --nc: 45 5 95; /* Neutral content */
+  --b1: 40 8 97; /* Base 100 - off-white */
+  --b2: 40 10 94; /* Base 200 */
+  --b3: 40 8 90; /* Base 300 */
+  --bc: 45 24 15; /* Base content */
+  --in: 198 93 60; /* Info */
+  --inc: 198 100 100; /* Info content */
+  --su: 158 64 52; /* Success */
+  --suc: 158 100 100; /* Success content */
+  --wa: 43 96 56; /* Warning */
+  --wac: 43 100 20; /* Warning content */
+  --er: 0 91 71; /* Error */
+  --erc: 0 100 100; /* Error content */
+  --rounded-box: 0.75rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1rem;
+  --animation-btn: 0.25s;
+  --animation-input: 0.2s;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
 }
 
 @theme inline {
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 }
