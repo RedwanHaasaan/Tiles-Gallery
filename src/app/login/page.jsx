@@ -5,10 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
-export const metadata = {
-  title: "Log In | Tiles Gallery",
-  description:"Log in to your Tiles Gallery account to access saved tiles, track orders, and explore premium tile collections.",
-};
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 

@@ -13,10 +13,6 @@ import {
   ImageIcon,
 } from 'lucide-react'
 
-export const metadata = {
-    title: 'Create Account | Tiles Gallery',
-    description:'Create a Tiles Gallery account to save your favorite tiles, manage orders, and get exclusive access to new collections.',
-}
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
