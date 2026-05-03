@@ -14,7 +14,7 @@ return(
       <div className="flex flex-wrap justify-center gap-4">
         <Link 
           href="/register"
-          className="btn bg-[#c9a87c] text-[#2d2926] hover:bg-[#b8976b] border-none px-8"
+          className="btn bg-[#c9a87c] text-white hover:bg-[#b8976b] border-none px-8"
         >
           Create Account
           <ArrowRight className="w-4 h-4" />
