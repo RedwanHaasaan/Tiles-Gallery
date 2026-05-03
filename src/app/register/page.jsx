@@ -13,6 +13,11 @@ import {
   ImageIcon,
 } from 'lucide-react'
 
+export const metadata = {
+    title: 'Create Account | Tiles Gallery',
+    description:'Create a Tiles Gallery account to save your favorite tiles, manage orders, and get exclusive access to new collections.',
+}
+
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
 
@@ -51,7 +56,7 @@ export default function RegisterPage() {
             </p>
           </div>
 
-          {/* Google Button (Static) */}
+          {/* Google Button*/}
           <button className="btn btn-outline w-full border-[#e0dcd6] text-[#2d2926] hover:bg-[#e8e4df] hover:border-[#e8e4df] mb-6">
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
