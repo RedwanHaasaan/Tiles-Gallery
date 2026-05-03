@@ -1,5 +1,6 @@
 import CategorySection from "@/components/Home/CategorySection";
 import CollectionSection from "@/components/Home/CollectionSection";
+import CTASection from "@/components/Home/CTASection";
 import FeaturedCarousel from "@/components/Home/FeaturedCarousel";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import Marquee from "@/components/Home/Marquee";
@@ -58,8 +59,12 @@ export default function Home() {
       </section>
       {/* Categories Section */}
       <CategorySection categories={categories} />
+      {/* Features Section */}
       <FeaturesSection/>
+      {/* Tiles Collection Section */}
       <CollectionSection/>
+      {/* Call To Action Section */}
+      <CTASection/>
     </div>
   );
 }
