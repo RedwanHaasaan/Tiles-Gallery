@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-[#c9a87c6a] rounded-full flex items-center justify-center">
               <Image
-                src="/tiles-gallery-logo.png"
+                src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png"
                 alt="Tiles Gallery Logo"
                 width={40}
                 height={40}

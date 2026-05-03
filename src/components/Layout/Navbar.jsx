@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center">
               <Image
-                src="/tiles-gallery-logo.png"
+                src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png"
                 alt="Tiles Gallery Logo"
                 width={40}
                 height={40}
