@@ -1,7 +1,8 @@
+import CategorySection from "@/components/CategorySection";
 import FeaturedCarousel from "@/components/FeaturedCarousel";
 import Marquee from "@/components/Marquee";
 import Navbar from "@/components/Navbar";
-import { getFeaturedTiles } from "@/utils/tilesHelper";
+import { getFeaturedTiles,categories } from "@/utils/tilesHelper";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 export default function Home() {
@@ -53,6 +54,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Categories Section */}
+      <CategorySection categories={categories} />
     </div>
   );
 }
