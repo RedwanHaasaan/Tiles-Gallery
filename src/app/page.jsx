@@ -4,7 +4,8 @@ import CTASection from "@/components/Home/CTASection";
 import FeaturedCarousel from "@/components/Home/FeaturedCarousel";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import Marquee from "@/components/Home/Marquee";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Layout/Footer";
+import Navbar from "@/components/Layout/Navbar";
 import { getFeaturedTiles,categories } from "@/utils/tilesHelper";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -65,6 +66,8 @@ export default function Home() {
       <CollectionSection/>
       {/* Call To Action Section */}
       <CTASection/>
+      {/* Footer Section */}
+      <Footer/>
     </div>
   );
 }
