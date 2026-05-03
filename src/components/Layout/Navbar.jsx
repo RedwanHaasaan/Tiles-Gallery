@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Home, LayoutGrid, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,9 +9,9 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/tiles", label: "All Tiles" },
-  ];
+    { href: '/', label: 'Home', icon: Home },
+    { href: '/tiles', label: 'All Tiles', icon: LayoutGrid },
+  ]
 
   return (
     <nav className="bg-[#f8f6f3] border-b border-[#e0dcd6] sticky top-0 z-50">
@@ -39,8 +39,9 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#2d2926] font-medium hover:text-[#c9a87c] transition"
+                className="text-[#2d2926] font-medium hover:text-[#c9a87c] transition flex flex-row gap-2 items-center"
               >
+                <link.icon className="w-5 h-5"/>
                 {link.label}
               </Link>
             ))}
@@ -77,8 +78,9 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-[#2d2926] font-medium hover:bg-[#e8e4df] transition"
+                  className="px-4 py-3 text-[#2d2926] font-medium hover:bg-[#e8e4df] transition flex flex-row gap-2 items-center"
                 >
+                  <link.icon className="w-5 h-5"/>
                   {link.label}
                 </Link>
               ))}
