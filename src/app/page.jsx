@@ -1,6 +1,8 @@
-import CategorySection from "@/components/CategorySection";
-import FeaturedCarousel from "@/components/FeaturedCarousel";
-import Marquee from "@/components/Marquee";
+import CategorySection from "@/components/Home/CategorySection";
+import CollectionSection from "@/components/Home/CollectionSection";
+import FeaturedCarousel from "@/components/Home/FeaturedCarousel";
+import FeaturesSection from "@/components/Home/FeaturesSection";
+import Marquee from "@/components/Home/Marquee";
 import Navbar from "@/components/Navbar";
 import { getFeaturedTiles,categories } from "@/utils/tilesHelper";
 import { ArrowRight } from "lucide-react";
@@ -56,6 +58,8 @@ export default function Home() {
       </section>
       {/* Categories Section */}
       <CategorySection categories={categories} />
+      <FeaturesSection/>
+      <CollectionSection/>
     </div>
   );
 }
