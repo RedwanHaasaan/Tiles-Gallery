@@ -11,20 +11,47 @@ import {
   ArrowRight,
   User,
   ImageIcon,
+  Loader2,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { emailRegex, passwordRegex } from "@/utils/authHelper";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { signUp } from "@/lib/auth-client";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [isLoading, setIsLoading] = useState(false)
+  const { register,handleSubmit,formState: { errors },} = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+  
+    try {
+      const { error } = await signUp.email({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        image: data.photo || undefined,
+      });
+  
+      if (error) {
+        toast.error(error.message || "Registration failed");
+        return;
+      }
+  
+      toast.success("Account created successfully!");
+  
+      router.push("/");
+      router.refresh();
+  
+    } catch (err) {
+      toast.error("Something went wrong");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <div className="min-h-screen flex bg-[#f8f6f3]">
@@ -212,10 +239,17 @@ export default function RegisterPage() {
             {/* Button */}
             <button
               type="submit"
+              disabled={isLoading}
               className="btn w-full bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none"
             >
-              Register Account
-              <ArrowRight className="w-4 h-4" />
+              {isLoading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <>
+                  Register Account
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </button>
           </form>
 
