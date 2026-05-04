@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   Lock,
@@ -11,12 +11,21 @@ import {
   ArrowRight,
   User,
   ImageIcon,
-} from 'lucide-react'
-
+} from "lucide-react";
+import { useForm } from "react-hook-form";
+import { emailRegex, passwordRegex } from "@/utils/authHelper";
 
 export default function RegisterPage() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div className="min-h-screen flex bg-[#f8f6f3]">
       {/* Left Side - Form */}
@@ -25,7 +34,7 @@ export default function RegisterPage() {
           {/* Mobile Logo */}
           <Link href="/" className="flex items-center gap-2 mb-8 lg:hidden">
             <div className="w-10 h-10 flex items-center justify-center">
-            <Image
+              <Image
                 src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png"
                 alt="Tiles Gallery Logo"
                 width={70}
@@ -42,7 +51,7 @@ export default function RegisterPage() {
               Create Account
             </h1>
             <p className="text-[#6b6b6b]">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link
                 href="/login"
                 className="text-[#c9a87c] hover:underline font-medium"
@@ -80,7 +89,7 @@ export default function RegisterPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Name */}
             <div className="form-control">
               <label className="label">
@@ -92,7 +101,9 @@ export default function RegisterPage() {
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
                 <input
                   type="text"
+                  required
                   placeholder="John Doe"
+                  {...register("name")}
                   className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none"
                 />
               </div>
@@ -110,9 +121,19 @@ export default function RegisterPage() {
                 <input
                   type="email"
                   placeholder="you@example.com"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: emailRegex,
+                      message: "Invalid email format",
+                    },
+                  })}
                   className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none"
                 />
               </div>
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Photo URL */}
@@ -121,15 +142,14 @@ export default function RegisterPage() {
                 <span className="label-text text-[#2d2926] font-medium">
                   Photo URL
                 </span>
-                <span className="label-text-alt text-[#6b6b6b]">
-                  Optional
-                </span>
+                <span className="label-text-alt text-[#6b6b6b]">Optional</span>
               </label>
               <div className="relative">
                 <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
                 <input
                   type="url"
                   placeholder="https://example.com/photo.jpg"
+                  {...register("photo")}
                   className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none"
                 />
               </div>
@@ -145,8 +165,16 @@ export default function RegisterPage() {
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   placeholder="Minimum 8 characters"
+                  {...register("password", {
+                    required: "Password is required",
+                    pattern: {
+                      value: passwordRegex,
+                      message:
+                        "Password must be 8+ chars, include uppercase, lowercase & special character",
+                    },
+                  })}
                   className="input input-bordered w-full pl-12 pr-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none"
                 />
                 <button
@@ -161,23 +189,29 @@ export default function RegisterPage() {
                   )}
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             {/* Terms */}
             <p className="text-sm text-[#6b6b6b]">
-              By creating an account, you agree to our{' '}
+              By creating an account, you agree to our{" "}
               <Link href="#" className="text-[#c9a87c] hover:underline">
                 Terms of Service
-              </Link>{' '}
-              and{' '}
+              </Link>{" "}
+              and{" "}
               <Link href="#" className="text-[#c9a87c] hover:underline">
                 Privacy Policy
-              </Link>.
+              </Link>
+              .
             </p>
 
             {/* Button */}
             <button
-              type="button"
+              type="submit"
               className="btn w-full bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none"
             >
               Register Account
@@ -197,7 +231,7 @@ export default function RegisterPage() {
       {/* Right Side - Image */}
       <div className="hidden lg:flex lg:w-1/2 relative">
         <Image
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
           alt="Beautiful tile patterns"
           fill
           className="object-cover"
@@ -210,16 +244,14 @@ export default function RegisterPage() {
               <span className="text-2xl font-bold">Tiles Gallery</span>
               <div className="w-12 h-12 bg-[#c9a87cb6] rounded-xl flex items-center justify-center">
                 <Image
-                src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png"
-                alt="Tiles Gallery Logo"
-                width={100}
-                height={100}
-              />
+                  src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png"
+                  alt="Tiles Gallery Logo"
+                  width={100}
+                  height={100}
+                />
               </div>
             </Link>
-            <h2 className="text-3xl font-bold mb-4">
-              Join Our Community
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Join Our Community</h2>
             <p className="text-gray-300 text-lg">
               Create an account to save your favorites, track orders, and get
               exclusive access to new collections.
@@ -228,5 +260,5 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -13,7 +13,7 @@ export default function LoginPage() {
       {/* Left Side - Image */}
       <div className="hidden lg:flex lg:w-1/2 relative">
         <Image
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80"
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"
           alt="Elegant marble tiles"
           fill
           className="object-cover"
