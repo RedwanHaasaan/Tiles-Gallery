@@ -18,6 +18,7 @@ import { emailRegex, passwordRegex } from "@/utils/authHelper";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signIn, signUp } from "@/lib/auth-client";
+import { useRedirectIfAuthenticated } from "@/hooks/useRedirectIfAuthenticated";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -25,6 +26,11 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const { register,handleSubmit,formState: { errors },} = useForm();
+
+
+  const { shouldRender } = useRedirectIfAuthenticated();
+
+  if (!shouldRender) return null;
 
   const onSubmit = async (data) => {
     setIsLoading(true);

@@ -5,15 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { signIn } from "@/lib/auth-client";
+import { signIn, useSession } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useRedirectIfAuthenticated } from "@/hooks/useRedirectIfAuthenticated";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-
   const router = useRouter();
 
   const {
@@ -21,6 +21,10 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { shouldRender } = useRedirectIfAuthenticated();
+
+  if (!shouldRender) return null;
 
   // Email login
   const onSubmit = async (data) => {
@@ -72,6 +76,7 @@ export default function LoginPage() {
           src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"
           alt="Elegant marble tiles"
           fill
+          sizes="(min-width: 1024px) 50vw, 0vw"
           className="object-cover"
           priority
         />
