@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import "animate.css";
 @plugin "daisyui";
 
 @plugin "daisyui" {
   themes: light --default, dark;
 }
+
 /* Custom Theme Colors for Tiles Gallery */
 :root {
   --background: #f8f6f3;
@@ -25,30 +27,30 @@
 
 /* DaisyUI Custom Theme */
 [data-theme="tiles"] {
-  --p: 45 24 44; /* Primary - warm brown */
-  --pf: 35 24 34; /* Primary focus */
-  --pc: 100 0 0; /* Primary content */
-  --s: 40 6 88; /* Secondary - cream */
-  --sf: 40 8 82; /* Secondary focus */
-  --sc: 45 24 20; /* Secondary content */
-  --a: 35 40 70; /* Accent - golden */
-  --af: 35 45 60; /* Accent focus */
-  --ac: 45 24 15; /* Accent content */
-  --n: 45 10 20; /* Neutral - dark brown */
-  --nf: 45 12 15; /* Neutral focus */
-  --nc: 45 5 95; /* Neutral content */
-  --b1: 40 8 97; /* Base 100 - off-white */
-  --b2: 40 10 94; /* Base 200 */
-  --b3: 40 8 90; /* Base 300 */
-  --bc: 45 24 15; /* Base content */
-  --in: 198 93 60; /* Info */
-  --inc: 198 100 100; /* Info content */
-  --su: 158 64 52; /* Success */
-  --suc: 158 100 100; /* Success content */
-  --wa: 43 96 56; /* Warning */
-  --wac: 43 100 20; /* Warning content */
-  --er: 0 91 71; /* Error */
-  --erc: 0 100 100; /* Error content */
+  --p: 45 24 44;
+  --pf: 35 24 34;
+  --pc: 100 0 0;
+  --s: 40 6 88;
+  --sf: 40 8 82;
+  --sc: 45 24 20;
+  --a: 35 40 70;
+  --af: 35 45 60;
+  --ac: 45 24 15;
+  --n: 45 10 20;
+  --nf: 45 12 15;
+  --nc: 45 5 95;
+  --b1: 40 8 97;
+  --b2: 40 10 94;
+  --b3: 40 8 90;
+  --bc: 45 24 15;
+  --in: 198 93 60;
+  --inc: 198 100 100;
+  --su: 158 64 52;
+  --suc: 158 100 100;
+  --wa: 43 96 56;
+  --wac: 43 100 20;
+  --er: 0 91 71;
+  --erc: 0 100 100;
   --rounded-box: 0.75rem;
   --rounded-btn: 0.5rem;
   --rounded-badge: 1rem;
@@ -79,16 +81,156 @@
   --color-ring: var(--ring);
 }
 
-/* Marquee Animation */
+/*Marquee*/
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
-
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/*Float (gentle bob)*/
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/*Shimmer (image hover gloss)*/
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  50%  { opacity: 0.4; }
+  100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
+}
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 124, 0.35) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  transition: none;
+  pointer-events: none;
+}
+.shimmer-card:hover::after {
+  animation: shimmer 0.75s ease forwards;
+}
+
+/*Loader tile fill*/
+@keyframes tile-fill {
+  0%   { opacity: 0; transform: scale(0.4); }
+  60%  { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.loader-tile {
+  animation: tile-fill 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+/*Loader shimmer text*/
+@keyframes text-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #c9a87c 0%,
+    #f0d9b0 40%,
+    #c9a87c 60%,
+    #c9a87c 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 2s linear infinite;
+}
+
+/*Loader progress bar*/
+@keyframes loader-progress {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+.loader-progress {
+  animation: loader-progress 1.6s ease-in-out infinite;
+}
+
+/*Scroll-reveal base*/
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*Stagger delays*/
+.stagger-1 { animation-delay: 0.1s !important; }
+.stagger-2 { animation-delay: 0.2s !important; }
+.stagger-3 { animation-delay: 0.3s !important; }
+.stagger-4 { animation-delay: 0.4s !important; }
+.stagger-5 { animation-delay: 0.5s !important; }
+.stagger-6 { animation-delay: 0.6s !important; }
+.stagger-7 { animation-delay: 0.7s !important; }
+.stagger-8 { animation-delay: 0.8s !important; }
+
+/*Animate.css speed overrides*/
+.animate__faster  { --animate-duration: 0.5s; }
+.animate__fast    { --animate-duration: 0.7s; }
+
+/*Navbar scroll shadow*/
+.navbar-scrolled {
+  box-shadow: 0 2px 20px rgba(45, 41, 38, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+/*Nav link underline slide*/
+.nav-link-animated {
+  position: relative;
+}
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #c9a87c;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+.nav-link-animated:hover::after {
+  width: 100%;
+}
+
+/*Hero slide content entrance*/
+@keyframes slide-content-in {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.slide-content-active {
+  animation: slide-content-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.slide-content-inactive {
+  opacity: 0;
+}
+
+/*Swiper thumbs custom*/
+.swiper-thumb-active {
+  border: 2px solid #c9a87c !important;
+  opacity: 1 !important;
 }
