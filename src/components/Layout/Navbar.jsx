@@ -4,10 +4,12 @@ import { signOut, useSession } from "@/lib/auth-client";
 import { Home, LayoutGrid, LogIn, LogOut, Menu, User, UserPlus, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const { data: session, isPending } = useSession();
   const navLinks = [
@@ -25,6 +27,7 @@ const Navbar = () => {
     try {
       await signOut();
       toast.success("Signed out successfully");
+      router.push("/");
     } catch (error) {
       toast.error("Failed to sign out");
     }
