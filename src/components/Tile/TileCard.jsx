@@ -1,8 +1,25 @@
-import Link from 'next/link'
+"use client"
 import Image from 'next/image'
 import { ArrowRight, Check, X } from 'lucide-react'
+import { useRouter } from 'next/navigation';
+import { useSession } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
 
 export default function TileCard({ tile, showDetails = true }) {
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const handleClick = () => {
+    if (!session) {
+      toast.error("You must be logged in to view details");
+
+      // redirect with return URL
+      router.push(`/login?redirect=/tile/${tile.id}`);
+      return;
+    }
+
+    router.push(`/tile/${tile.id}`);
+  };
   return (
     <div className="card bg-white shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden border border-[#e0dcd6]">
       {/* Image */}
@@ -59,13 +76,13 @@ export default function TileCard({ tile, showDetails = true }) {
 
         {/* Action */}
         <div className="card-actions mt-3">
-          <Link 
-            href={`/tile/${tile.id}`}
+          <button 
+            onClick={handleClick}
             className="btn btn-block bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none group/btn"
           >
             View Details
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-          </Link>
+          </button>
         </div>
       </div>
     </div>

@@ -1,22 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "@/lib/auth-client";
-import { toast } from "react-toastify";
 
-export function useRedirectIfAuthenticated(redirectTo = "/") {
+export function useRedirectIfAuthenticated(defaultRedirect = "/") {
   const { data: session, isPending } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // read redirect from URL
+  const redirect = searchParams.get("redirect");
 
   useEffect(() => {
     if (!isPending && session) {
-    toast.error("You are already logged in");
-      router.replace(redirectTo);
+      // safety: only allow internal paths
+      const safe = redirect && redirect.startsWith("/") ? redirect : defaultRedirect;
+      router.replace(safe);
     }
-  }, [session, isPending, router, redirectTo]);
+  }, [session, isPending, router, redirect, defaultRedirect]);
 
-  const shouldRender = !isPending && !session;
-
-  return { shouldRender };
+  // render page only if not logged in and not loading
+  return { shouldRender: !isPending && !session };
 }

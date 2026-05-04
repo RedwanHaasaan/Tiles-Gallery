@@ -12,8 +12,6 @@ import {
   Heart,
   Share2
 } from 'lucide-react'
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
 import Navbar from '@/components/Layout/Navbar'
 import TileCard from '@/components/Tile/TileCard'
 import Footer from '@/components/Layout/Footer'
@@ -38,15 +36,7 @@ export async function generateMetadata({ params }) {
 
 export default async function TileDetailsPage({ params }) {
   const { id } = await params
-  
-//   // Check authentication - this is a private route
-//   const session = await auth.api.getSession({
-//     headers: await headers(),
-//   })
 
-//   if (!session) {
-//     redirect('/login')
-//   }
 
   const tile = getTileById(id)
 
@@ -54,7 +44,7 @@ export default async function TileDetailsPage({ params }) {
     notFound()
   }
 
-  // Get related tiles (same category, excluding current)
+  // Get related tiles
   const relatedTiles = tilesData
     .filter(t => t.category === tile.category && t.id !== tile.id)
     .slice(0, 4)

@@ -5,17 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { signIn, useSession } from "@/lib/auth-client";
+import { signIn} from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useRedirectIfAuthenticated } from "@/hooks/useRedirectIfAuthenticated";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -26,28 +24,26 @@ export default function LoginPage() {
 
   if (!shouldRender) return null;
 
+
   // Email login
   const onSubmit = async (data) => {
     setIsLoading(true);
-
+  
     try {
       const { error } = await signIn.email({
         email: data.email,
         password: data.password,
       });
-
+  
       if (error) {
         toast.error(error.message || "Invalid email or password");
         return;
       }
-
+  
       toast.success("Login successful. Welcome back!");
-
-      router.push("/");
-      router.refresh();
+  
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(err);
+      toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);
     }
