@@ -8,9 +8,9 @@ const TILE_DELAYS = [0, 0.08, 0.16, 0.08, 0.16, 0.24, 0.16, 0.24, 0.32]
 
 // Tile patterns (background colors cycling through the brand palette)
 const TILE_COLORS = [
-  '#2d2926', '#c9a87c', '#2d2926',
-  '#c9a87c', '#f0ebe5', '#c9a87c',
-  '#2d2926', '#c9a87c', '#2d2926',
+  'var(--espresso)', 'var(--gold)', 'var(--espresso)',
+  'var(--gold)', 'var(--cream-muted)', 'var(--gold)',
+  'var(--espresso)', 'var(--gold)', 'var(--espresso)',
 ]
 
 export default function PageLoader() {
@@ -37,7 +37,7 @@ export default function PageLoader() {
   return (
     <div
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-      style={{ background: 'rgba(45, 41, 38, 0.97)' }}
+      style={{ background: 'color-mix(in srgb, var(--espresso) 97%, transparent)' }}
       aria-label="Loading page"
     >
       {/* Tile Grid */}
@@ -49,7 +49,7 @@ export default function PageLoader() {
             style={{
               backgroundColor: color,
               animationDelay: `${TILE_DELAYS[i]}s`,
-              border: color === '#f0ebe5' ? '2px solid #c9a87c' : '1px solid rgba(201,168,124,0.2)',
+              border: color === 'var(--cream-muted)' ? '2px solid #c9a87c' : '1px solid color-mix(in srgb, var(--gold) 20%, transparent)',
             }}
           />
         ))}

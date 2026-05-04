@@ -59,52 +59,52 @@ export default function RegisterClient() {
   );
 
   return (
-    <div className="min-h-screen flex bg-[#f8f6f3]">
+    <div className="min-h-screen flex bg-cream">
       {/* Left Side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className={`w-full max-w-md ${shake ? "animate__animated animate__shakeX" : "animate__animated animate__fadeInUp"}`}>
           {/* Mobile Logo */}
           <Link href="/" className="flex items-center gap-2 mb-8 lg:hidden">
             <Image src="https://i.ibb.co/4wWTc3y7/tiles-gallery-Logo.png" alt="Logo" width={40} height={40} />
-            <span className="text-xl font-bold text-[#2d2926]">Tiles Gallery</span>
+            <span className="text-xl font-bold text-espresso">Tiles Gallery</span>
           </Link>
 
           <div className="text-center lg:text-left mb-8">
-            <h1 className="text-3xl font-bold text-[#2d2926] mb-2">Create Account</h1>
-            <p className="text-[#6b6b6b]">Already have an account?{" "}
-              <Link href="/login" className="text-[#c9a87c] hover:underline font-medium">Log in</Link>
+            <h1 className="text-3xl font-bold text-espresso mb-2">Create Account</h1>
+            <p className="text-ash">Already have an account?{" "}
+              <Link href="/login" className="text-gold hover:underline font-medium">Log in</Link>
             </p>
           </div>
 
           {/* Google */}
           <button onClick={handleGoogleSignIn} disabled={isGoogleLoading}
-            className="btn btn-outline w-full border-[#e0dcd6] text-[#2d2926] hover:bg-[#e8e4df] hover:border-[#e8e4df] mb-6 hover:scale-[1.02] transition-transform duration-200 animate__animated animate__fadeIn stagger-1"
+            className="btn btn-outline w-full border-tile-border text-espresso hover:bg-stone hover:border-stone mb-6 hover:scale-[1.02] transition-transform duration-200 animate__animated animate__fadeIn stagger-1"
             style={{ animationFillMode: 'both' }}>
             {isGoogleLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : googleSvg}
             Continue with Google
           </button>
 
-          <div className="divider text-[#6b6b6b] text-sm">or register with email</div>
+          <div className="divider text-ash text-sm">or register with email</div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Name */}
             <div className="form-control animate__animated animate__fadeIn stagger-2" style={{ animationFillMode: 'both' }}>
-              <label className="label"><span className="label-text text-[#2d2926] font-medium">Full Name</span></label>
+              <label className="label"><span className="label-text text-espresso font-medium">Full Name</span></label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                 <input type="text" required placeholder="John Doe" {...register("name")}
-                  className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none transition-colors duration-200" />
+                  className="input input-bordered w-full pl-12 bg-white border-tile-border focus:border-gold focus:outline-none transition-colors duration-200" />
               </div>
             </div>
 
             {/* Email */}
             <div className="form-control animate__animated animate__fadeIn stagger-3" style={{ animationFillMode: 'both' }}>
-              <label className="label"><span className="label-text text-[#2d2926] font-medium">Email Address</span></label>
+              <label className="label"><span className="label-text text-espresso font-medium">Email Address</span></label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                 <input type="email" placeholder="you@example.com"
                   {...register("email", { required: "Email is required", pattern: { value: emailRegex, message: "Invalid email format" } })}
-                  className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none transition-colors duration-200" />
+                  className="input input-bordered w-full pl-12 bg-white border-tile-border focus:border-gold focus:outline-none transition-colors duration-200" />
               </div>
               {errors.email && <p className="text-red-500 text-sm animate__animated animate__fadeIn">{errors.email.message}</p>}
             </div>
@@ -112,47 +112,47 @@ export default function RegisterClient() {
             {/* Photo URL */}
             <div className="form-control animate__animated animate__fadeIn stagger-4" style={{ animationFillMode: 'both' }}>
               <label className="label">
-                <span className="label-text text-[#2d2926] font-medium">Photo URL</span>
-                <span className="label-text-alt text-[#6b6b6b]">Optional</span>
+                <span className="label-text text-espresso font-medium">Photo URL</span>
+                <span className="label-text-alt text-ash">Optional</span>
               </label>
               <div className="relative">
-                <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                 <input type="url" placeholder="https://example.com/photo.jpg" {...register("photo")}
-                  className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none transition-colors duration-200" />
+                  className="input input-bordered w-full pl-12 bg-white border-tile-border focus:border-gold focus:outline-none transition-colors duration-200" />
               </div>
             </div>
 
             {/* Password */}
             <div className="form-control animate__animated animate__fadeIn stagger-5" style={{ animationFillMode: 'both' }}>
-              <label className="label"><span className="label-text text-[#2d2926] font-medium">Password</span></label>
+              <label className="label"><span className="label-text text-espresso font-medium">Password</span></label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                 <input type={showPassword ? "text" : "password"} placeholder="Minimum 8 characters"
                   {...register("password", { required: "Password is required", pattern: { value: passwordRegex, message: "Password must be 8+ chars, include uppercase, lowercase & special character" } })}
-                  className="input input-bordered w-full pl-12 pr-12 bg-white border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none transition-colors duration-200" />
+                  className="input input-bordered w-full pl-12 pr-12 bg-white border-tile-border focus:border-gold focus:outline-none transition-colors duration-200" />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b6b6b] hover:text-[#2d2926] transition-colors">
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-ash hover:text-espresso transition-colors">
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
               {errors.password && <p className="text-red-500 text-sm animate__animated animate__fadeIn">{errors.password.message}</p>}
             </div>
 
-            <p className="text-sm text-[#6b6b6b]">
+            <p className="text-sm text-ash">
               By creating an account, you agree to our{" "}
-              <Link href="#" className="text-[#c9a87c] hover:underline">Terms of Service</Link>{" "}and{" "}
-              <Link href="#" className="text-[#c9a87c] hover:underline">Privacy Policy</Link>.
+              <Link href="#" className="text-gold hover:underline">Terms of Service</Link>{" "}and{" "}
+              <Link href="#" className="text-gold hover:underline">Privacy Policy</Link>.
             </p>
 
             <button type="submit" disabled={isLoading}
-              className="btn w-full bg-[#2d2926] text-white hover:bg-[#c9a87c] border-none transition-all duration-300 hover:scale-[1.02] animate__animated animate__fadeIn stagger-6"
+              className="btn w-full bg-espresso text-white hover:bg-gold border-none transition-all duration-300 hover:scale-[1.02] animate__animated animate__fadeIn stagger-6"
               style={{ animationFillMode: 'both' }}>
               {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><span>Register Account</span><ArrowRight className="w-4 h-4" /></>}
             </button>
           </form>
 
-          <p className="text-center mt-8 text-[#6b6b6b] text-sm">
-            <Link href="/" className="hover:text-[#2d2926] hover:underline transition-colors duration-200">Back to Home</Link>
+          <p className="text-center mt-8 text-ash text-sm">
+            <Link href="/" className="hover:text-espresso hover:underline transition-colors duration-200">Back to Home</Link>
           </p>
         </div>
       </div>
@@ -160,7 +160,7 @@ export default function RegisterClient() {
       {/* Right Side - Image */}
       <div className="hidden lg:flex lg:w-1/2 relative">
         <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Beautiful tile patterns" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-l from-[#2d2926]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-espresso/80 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-end p-12">
           <div className="max-w-md text-white text-right animate__animated animate__fadeInRight">
             <Link href="/" className="flex items-center gap-2 mb-8 justify-end">

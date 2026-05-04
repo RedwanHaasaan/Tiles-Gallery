@@ -30,13 +30,13 @@ export default function NotFound() {
 
           <Link
             href="/"
-            className="px-6 py-3 rounded-xl bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none font-medium transition shadow-sm"
+            className="px-6 py-3 rounded-xl bg-espresso text-white hover:bg-espresso-dark border-none font-medium transition shadow-sm"
           >
             Go Home
           </Link>
           <Link
             href="/tiles"
-            className=" px-6 py-3 rounded-xl border border-[#2d2926] text-[#2d2926]font-medium hover:bg-[#2d2926] transition hover:text-white"
+            className=" px-6 py-3 rounded-xl border border-espresso text-espressofont-medium hover:bg-espresso transition hover:text-white"
           >
             Browse All Tiles
           </Link>

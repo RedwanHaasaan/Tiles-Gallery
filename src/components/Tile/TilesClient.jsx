@@ -62,22 +62,22 @@ export default function TilesClient({ tiles, categories }) {
   return (
     <div className="space-y-6">
       {/* Search and Filter Bar */}
-      <div className="bg-white rounded-xl shadow-sm border border-[#e0dcd6] p-4 sm:p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-tile-border p-4 sm:p-6">
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search Input */}
           <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-[#6b6b6b] z-10" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-ash z-10" />
             <input
               type="text"
               placeholder="Search tiles by name, category, material..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="input input-bordered w-full pl-12 bg-[#f8f6f3] border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none"
+              className="input input-bordered w-full pl-12 bg-cream border-tile-border focus:border-gold focus:outline-none"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b6b6b] hover:text-[#2d2926]"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-ash hover:text-espresso"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -88,7 +88,7 @@ export default function TilesClient({ tiles, categories }) {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="select select-bordered bg-[#f8f6f3] border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none min-w-[150px]"
+            className="select select-bordered bg-cream border-tile-border focus:border-gold focus:outline-none min-w-[150px]"
           >
             <option value="">All Categories</option>
             {categories.map((category) => (
@@ -102,7 +102,7 @@ export default function TilesClient({ tiles, categories }) {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="select select-bordered bg-[#f8f6f3] border-[#e0dcd6] focus:border-[#c9a87c] focus:outline-none min-w-[150px]"
+            className="select select-bordered bg-cream border-tile-border focus:border-gold focus:outline-none min-w-[150px]"
           >
             <option value="name">Sort by Name</option>
             <option value="price-low">Price: Low to High</option>
@@ -110,13 +110,13 @@ export default function TilesClient({ tiles, categories }) {
           </select>
 
           {/* View Mode Toggle */}
-          <div className="flex items-center gap-2 bg-[#f8f6f3] rounded-lg p-1 border border-[#e0dcd6]">
+          <div className="flex items-center gap-2 bg-cream rounded-lg p-1 border border-tile-border">
             <button
               onClick={() => setViewMode('grid')}
               className={`p-2 rounded-md transition-colors ${
                 viewMode === 'grid' 
-                  ? 'bg-[#2d2926] text-white' 
-                  : 'text-[#6b6b6b] hover:text-[#2d2926]'
+                  ? 'bg-espresso text-white' 
+                  : 'text-ash hover:text-espresso'
               }`}
             >
               <Grid3X3 className="w-5 h-5" />
@@ -125,8 +125,8 @@ export default function TilesClient({ tiles, categories }) {
               onClick={() => setViewMode('list')}
               className={`p-2 rounded-md transition-colors ${
                 viewMode === 'list' 
-                  ? 'bg-[#2d2926] text-white' 
-                  : 'text-[#6b6b6b] hover:text-[#2d2926]'
+                  ? 'bg-espresso text-white' 
+                  : 'text-ash hover:text-espresso'
               }`}
             >
               <LayoutGrid className="w-5 h-5" />
@@ -136,13 +136,13 @@ export default function TilesClient({ tiles, categories }) {
 
         {/* Active Filters */}
         {hasActiveFilters && (
-          <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[#e0dcd6]">
-            <span className="text-sm text-[#6b6b6b] flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-tile-border">
+            <span className="text-sm text-ash flex items-center gap-1">
               <Filter className="w-4 h-4" />
               Active Filters:
             </span>
             {searchQuery && (
-              <span className="badge bg-[#2d2926] text-white border-none gap-1 p-2">
+              <span className="badge bg-espresso text-white border-none gap-1 p-2">
                 Search: {searchQuery}
                 <button onClick={() => setSearchQuery('')}>
                   <X className="w-3 h-3" />
@@ -150,7 +150,7 @@ export default function TilesClient({ tiles, categories }) {
               </span>
             )}
             {selectedCategory && (
-              <span className="badge bg-[#c9a87c] text-white border-none gap-1 p-2">
+              <span className="badge bg-gold text-white border-none gap-1 p-2">
                 {selectedCategory}
                 <button onClick={() => setSelectedCategory('')}>
                   <X className="w-3 h-3" />
@@ -159,7 +159,7 @@ export default function TilesClient({ tiles, categories }) {
             )}
             <button
               onClick={clearFilters}
-              className="text-sm text-[#c9a87c] hover:text-[#2d2926] font-medium cursor-pointer"
+              className="text-sm text-gold hover:text-espresso font-medium cursor-pointer"
             >
               Clear All
             </button>
@@ -169,8 +169,8 @@ export default function TilesClient({ tiles, categories }) {
 
       {/* Results Count */}
       <div className="flex items-center justify-between">
-        <p className="text-[#6b6b6b]">
-          Showing <span className="font-semibold text-[#2d2926]">{filteredTiles.length}</span> tiles
+        <p className="text-ash">
+          Showing <span className="font-semibold text-espresso">{filteredTiles.length}</span> tiles
         </p>
       </div>
 
@@ -187,16 +187,16 @@ export default function TilesClient({ tiles, categories }) {
         </div>
       ) : (
         <div className="text-center py-16">
-          <div className="w-20 h-20 bg-[#e8e4df] rounded-full flex items-center justify-center mx-auto mb-4">
-            <Search className="w-10 h-10 text-[#6b6b6b]" />
+          <div className="w-20 h-20 bg-stone rounded-full flex items-center justify-center mx-auto mb-4">
+            <Search className="w-10 h-10 text-ash" />
           </div>
-          <h3 className="text-xl font-semibold text-[#2d2926] mb-2">No tiles found</h3>
-          <p className="text-[#6b6b6b] mb-4">
+          <h3 className="text-xl font-semibold text-espresso mb-2">No tiles found</h3>
+          <p className="text-ash mb-4">
             Try adjusting your search or filter criteria
           </p>
           <button
             onClick={clearFilters}
-            className="btn bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none"
+            className="btn bg-espresso text-white hover:bg-espresso-dark border-none"
           >
             Clear Filters
           </button>

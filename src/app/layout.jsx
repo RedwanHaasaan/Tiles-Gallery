@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       data-theme="tiles"
-      className="bg-[#f8f6f3] min-h-full flex flex-col"
+      className="bg-cream min-h-full flex flex-col"
       lang="en"
     >
       <body

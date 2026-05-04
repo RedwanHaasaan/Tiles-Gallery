@@ -36,20 +36,20 @@ function FeatureCard({ feature, index }) {
   return (
     <div
       ref={ref}
-      className={`text-center p-6 rounded-xl bg-[#f8f6f3] hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 ${feature.delay} ${
+      className={`text-center p-6 rounded-xl bg-cream hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 ${feature.delay} ${
         isVisible
           ? 'animate__animated animate__fadeInUp'
           : 'opacity-0'
       }`}
       style={{ animationDelay: `${index * 0.12}s`, animationFillMode: 'both' }}
     >
-      <div className="w-14 h-14 bg-[#2d2926] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#c9a87c] transition-colors duration-300 group-hover:animate-float">
-        <feature.icon className="w-7 h-7 text-[#c9a87c] group-hover:text-[#2d2926] transition-colors duration-300" />
+      <div className="w-14 h-14 bg-espresso rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold transition-colors duration-300 group-hover:animate-float">
+        <feature.icon className="w-7 h-7 text-gold group-hover:text-espresso transition-colors duration-300" />
       </div>
-      <h3 className="text-lg font-semibold text-[#2d2926] mb-2 group-hover:text-[#c9a87c] transition-colors duration-200">
+      <h3 className="text-lg font-semibold text-espresso mb-2 group-hover:text-gold transition-colors duration-200">
         {feature.title}
       </h3>
-      <p className="text-[#6b6b6b] text-sm leading-relaxed">
+      <p className="text-ash text-sm leading-relaxed">
         {feature.description}
       </p>
     </div>
@@ -68,10 +68,10 @@ const FeaturesSection = () => {
             headerVisible ? 'animate__animated animate__fadeInDown' : 'opacity-0'
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#2d2926] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-espresso mb-4">
             Why Choose Us
           </h2>
-          <p className="text-[#6b6b6b] max-w-2xl mx-auto">
+          <p className="text-ash max-w-2xl mx-auto">
             We are committed to providing exceptional quality and service
           </p>
         </div>

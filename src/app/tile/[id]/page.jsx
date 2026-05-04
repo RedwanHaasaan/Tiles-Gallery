@@ -39,7 +39,7 @@ export default async function TileDetailsPage({ params }) {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+    <div className="min-h-screen flex flex-col bg-cream">
       <Navbar />
 
       <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
@@ -47,7 +47,7 @@ export default async function TileDetailsPage({ params }) {
 
           {/* Breadcrumb */}
           <nav className="mb-6 animate__animated animate__fadeIn">
-            <Link href="/tiles" className="inline-flex items-center gap-2 text-[#6b6b6b] hover:text-[#2d2926] hover:gap-3 transition-all duration-200">
+            <Link href="/tiles" className="inline-flex items-center gap-2 text-ash hover:text-espresso hover:gap-3 transition-all duration-200">
               <ArrowLeft className="w-4 h-4" />
               Back to All Tiles
             </Link>
@@ -77,25 +77,25 @@ export default async function TileDetailsPage({ params }) {
             {/* Details Section */}
             <div className="space-y-6 animate__animated animate__fadeInRight">
               {/* Category Badge */}
-              <span className="badge bg-[#c9a87c] text-white border-none p-2 animate__animated animate__bounceIn">
+              <span className="badge bg-gold text-white border-none p-2 animate__animated animate__bounceIn">
                 {tile.category}
               </span>
 
               {/* Title & Price */}
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold text-[#2d2926] mb-2">{tile.name}</h1>
-                <p className="text-3xl font-bold text-[#c9a87c]">
+                <h1 className="text-3xl sm:text-4xl font-bold text-espresso mb-2">{tile.name}</h1>
+                <p className="text-3xl font-bold text-gold">
                   ${tile.price.toFixed(2)}
-                  <span className="text-sm font-normal text-[#6b6b6b] ml-2">per sq ft</span>
+                  <span className="text-sm font-normal text-ash ml-2">per sq ft</span>
                 </p>
               </div>
 
               {/* Description */}
-              <p className="text-[#6b6b6b] text-lg leading-relaxed">{tile.description}</p>
+              <p className="text-ash text-lg leading-relaxed">{tile.description}</p>
 
               {/* Specs */}
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-[#e0dcd6]">
-                <h2 className="text-lg font-semibold text-[#2d2926] mb-4">Specifications</h2>
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-tile-border">
+                <h2 className="text-lg font-semibold text-espresso mb-4">Specifications</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {specItems.map((spec, i) => (
                     <div
@@ -103,12 +103,12 @@ export default async function TileDetailsPage({ params }) {
                       className="flex items-center gap-3 animate__animated animate__flipInX"
                       style={{ animationDelay: `${i * 0.12}s`, animationFillMode: 'both' }}
                     >
-                      <div className="w-10 h-10 bg-[#f0ebe5] rounded-lg flex items-center justify-center hover:bg-[#c9a87c] transition-colors duration-300 group">
-                        <spec.icon className="w-5 h-5 text-[#c9a87c] group-hover:text-white transition-colors duration-300" />
+                      <div className="w-10 h-10 bg-cream-muted rounded-lg flex items-center justify-center hover:bg-gold transition-colors duration-300 group">
+                        <spec.icon className="w-5 h-5 text-gold group-hover:text-white transition-colors duration-300" />
                       </div>
                       <div>
-                        <p className="text-sm text-[#6b6b6b]">{spec.label}</p>
-                        <p className="font-medium text-[#2d2926]">{spec.value}</p>
+                        <p className="text-sm text-ash">{spec.label}</p>
+                        <p className="font-medium text-espresso">{spec.value}</p>
                       </div>
                     </div>
                   ))}
@@ -117,15 +117,15 @@ export default async function TileDetailsPage({ params }) {
 
               {/* Actions */}
               <div className="flex flex-col sm:flex-row gap-4 animate__animated animate__bounceIn" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-                <button className="btn flex-1 bg-[#2d2926] text-white hover:bg-[#c9a87c] border-none transition-all duration-300 hover:scale-105" disabled={!tile.inStock}>
+                <button className="btn flex-1 bg-espresso text-white hover:bg-gold border-none transition-all duration-300 hover:scale-105" disabled={!tile.inStock}>
                   <ShoppingCart className="w-5 h-5" />
                   Add to Cart
                 </button>
-                <button className="btn btn-outline border-[#e0dcd6] text-[#2d2926] hover:bg-[#e8e4df] hover:border-[#c9a87c] hover:text-[#c9a87c] transition-all duration-200 hover:scale-105">
+                <button className="btn btn-outline border-tile-border text-espresso hover:bg-stone hover:border-gold hover:text-gold transition-all duration-200 hover:scale-105">
                   <Heart className="w-5 h-5" />
                   Save
                 </button>
-                <button className="btn btn-outline border-[#e0dcd6] text-[#2d2926] hover:bg-[#e8e4df] hover:border-[#c9a87c] hover:text-[#c9a87c] transition-all duration-200 hover:scale-105">
+                <button className="btn btn-outline border-tile-border text-espresso hover:bg-stone hover:border-gold hover:text-gold transition-all duration-200 hover:scale-105">
                   <Share2 className="w-5 h-5" />
                   Share
                 </button>
@@ -133,12 +133,12 @@ export default async function TileDetailsPage({ params }) {
 
               {/* Features */}
               <div className="space-y-3">
-                <h3 className="font-semibold text-[#2d2926]">Features</h3>
+                <h3 className="font-semibold text-espresso">Features</h3>
                 <ul className="space-y-2">
                   {features.map((feature, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-2 text-[#6b6b6b] animate__animated animate__fadeInUp"
+                      className="flex items-center gap-2 text-ash animate__animated animate__fadeInUp"
                       style={{ animationDelay: `${0.4 + i * 0.08}s`, animationFillMode: 'both' }}
                     >
                       <Check className="w-4 h-4 text-green-500 shrink-0" />
@@ -154,8 +154,8 @@ export default async function TileDetailsPage({ params }) {
           {relatedTiles.length > 0 && (
             <section className="mt-16">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#2d2926]">Related Tiles</h2>
-                <Link href={`/tiles?category=${tile.category}`} className="text-[#c9a87c] hover:text-[#2d2926] font-medium hover:underline transition-colors duration-200">
+                <h2 className="text-2xl sm:text-3xl font-bold text-espresso">Related Tiles</h2>
+                <Link href={`/tiles?category=${tile.category}`} className="text-gold hover:text-espresso font-medium hover:underline transition-colors duration-200">
                   View All {tile.category}
                 </Link>
               </div>

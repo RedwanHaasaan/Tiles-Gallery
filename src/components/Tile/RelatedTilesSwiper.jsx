@@ -52,15 +52,15 @@ export default function RelatedTilesSwiper({ tiles }) {
       {/* Custom Navigation */}
       <button
         ref={prevRef}
-        className="absolute left-0 top-1/2 -translate-y-6 z-10 w-10 h-10 bg-white hover:bg-[#c9a87c] rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 -translate-x-5 cursor-pointer border border-[#e0dcd6]"
+        className="absolute left-0 top-1/2 -translate-y-6 z-10 w-10 h-10 bg-white hover:bg-gold rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 -translate-x-5 cursor-pointer border border-tile-border"
       >
-        <ChevronLeft className="w-5 h-5 text-[#2d2926]" />
+        <ChevronLeft className="w-5 h-5 text-espresso" />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-0 top-1/2 -translate-y-6 z-10 w-10 h-10 bg-white hover:bg-[#c9a87c] rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 translate-x-5 cursor-pointer border border-[#e0dcd6]"
+        className="absolute right-0 top-1/2 -translate-y-6 z-10 w-10 h-10 bg-white hover:bg-gold rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 translate-x-5 cursor-pointer border border-tile-border"
       >
-        <ChevronRight className="w-5 h-5 text-[#2d2926]" />
+        <ChevronRight className="w-5 h-5 text-espresso" />
       </button>
     </div>
   )

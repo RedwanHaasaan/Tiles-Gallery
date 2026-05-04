@@ -45,17 +45,17 @@ function CategoryCard({ category, index }) {
       {/* Shimmer overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-300" />
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-           style={{ background: 'linear-gradient(135deg, rgba(201,168,124,0.15) 0%, transparent 60%)' }} />
+           style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--gold) 15%, transparent) 0%, transparent 60%)' }} />
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform group-hover:-translate-y-1 transition-transform duration-300">
-        <h3 className="text-xl font-bold mb-1 group-hover:text-[#c9a87c] transition-colors duration-200">
+        <h3 className="text-xl font-bold mb-1 group-hover:text-gold transition-colors duration-200">
           {category}
         </h3>
         <p className="text-sm text-gray-300 mb-3">
           {categoryDescriptions[category]}
         </p>
-        <span className="inline-flex items-center gap-1 text-[#c9a87c] text-sm font-medium group-hover:gap-3 transition-all duration-300">
+        <span className="inline-flex items-center gap-1 text-gold text-sm font-medium group-hover:gap-3 transition-all duration-300">
           Explore
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
         </span>
@@ -68,7 +68,7 @@ export default function CategorySection({ categories }) {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal({ threshold: 0.2 })
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#f0ebe5]">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-cream-muted">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div
@@ -77,10 +77,10 @@ export default function CategorySection({ categories }) {
             headerVisible ? 'animate__animated animate__fadeInDown' : 'opacity-0'
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#2d2926] mb-4 text-balance">
+          <h2 className="text-3xl sm:text-4xl font-bold text-espresso mb-4 text-balance">
             Explore Our Collections
           </h2>
-          <p className="text-[#6b6b6b] max-w-2xl mx-auto text-pretty">
+          <p className="text-ash max-w-2xl mx-auto text-pretty">
             Browse through our carefully curated categories of premium tiles,
             each offering unique aesthetics for your design vision.
           </p>

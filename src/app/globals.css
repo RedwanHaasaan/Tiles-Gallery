@@ -8,20 +8,32 @@
 
 /* Custom Theme Colors for Tiles Gallery */
 :root {
-  --background: #f8f6f3;
-  --foreground: #1a1a1a;
+  /* Brand Semantic Colors */
+  --espresso:       #2d2926;
+  --espresso-dark:  #1a1a1a;
+  --gold:           #c9a87c;
+  --gold-dark:      #b8976b;
+  --cream:          #f8f6f3;
+  --cream-muted:    #f0ebe5;
+  --stone:          #e8e4df;
+  --tile-border:    #e0dcd6;
+  --ash:            #6b6b6b;
+
+  /* Legacy DaisyUI / Component Mappings */
+  --background: var(--cream);
+  --foreground: var(--espresso-dark);
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --primary: #2d2926;
+  --card-foreground: var(--espresso-dark);
+  --primary: var(--espresso);
   --primary-foreground: #ffffff;
-  --secondary: #e8e4df;
-  --secondary-foreground: #2d2926;
-  --muted: #f0ebe5;
-  --muted-foreground: #6b6b6b;
-  --accent: #c9a87c;
-  --accent-foreground: #1a1a1a;
-  --border: #e0dcd6;
-  --ring: #c9a87c;
+  --secondary: var(--stone);
+  --secondary-foreground: var(--espresso);
+  --muted: var(--cream-muted);
+  --muted-foreground: var(--ash);
+  --accent: var(--gold);
+  --accent-foreground: var(--espresso-dark);
+  --border: var(--tile-border);
+  --ring: var(--gold);
   --radius: 0.5rem;
 }
 
@@ -65,6 +77,18 @@
 @theme inline {
   --font-sans: 'Geist', system-ui, sans-serif;
   --font-mono: 'Geist Mono', monospace;
+
+  /* Expose Brand Colors to Tailwind Utilities */
+  --color-espresso:       var(--espresso);
+  --color-espresso-dark:  var(--espresso-dark);
+  --color-gold:           var(--gold);
+  --color-gold-dark:      var(--gold-dark);
+  --color-cream:          var(--cream);
+  --color-cream-muted:    var(--cream-muted);
+  --color-stone:          var(--stone);
+  --color-tile-border:    var(--tile-border);
+  --color-ash:            var(--ash);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -116,7 +140,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(201, 168, 124, 0.35) 50%,
+    color-mix(in srgb, var(--gold) 35%, transparent) 50%,
     transparent 100%
   );
   transform: translateX(-100%) skewX(-15deg);
@@ -146,10 +170,10 @@
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #c9a87c 0%,
+    var(--gold) 0%,
     #f0d9b0 40%,
-    #c9a87c 60%,
-    #c9a87c 100%
+    var(--gold) 60%,
+    var(--gold) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -165,17 +189,6 @@
 }
 .loader-progress {
   animation: loader-progress 1.6s ease-in-out infinite;
-}
-
-/*Scroll-reveal base*/
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /*Stagger delays*/
@@ -194,7 +207,7 @@
 
 /*Navbar scroll shadow*/
 .navbar-scrolled {
-  box-shadow: 0 2px 20px rgba(45, 41, 38, 0.12);
+  box-shadow: 0 2px 20px color-mix(in srgb, var(--espresso) 12%, transparent);
   backdrop-filter: blur(8px);
 }
 
@@ -209,7 +222,7 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: #c9a87c;
+  background: var(--gold);
   transition: width 0.3s ease;
   border-radius: 2px;
 }
@@ -231,6 +244,6 @@
 
 /*Swiper thumbs custom*/
 .swiper-thumb-active {
-  border: 2px solid #c9a87c !important;
+  border: 2px solid var(--gold) !important;
   opacity: 1 !important;
 }

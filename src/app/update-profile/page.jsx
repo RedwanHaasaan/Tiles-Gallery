@@ -80,10 +80,10 @@ const onSubmit = async (data) => {
   // Loading
   if (isPending) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+      <div className="min-h-screen flex flex-col bg-cream">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-[#2d2926]" />
+          <Loader2 className="w-8 h-8 animate-spin text-espresso" />
         </main>
         <Footer />
       </div>
@@ -93,7 +93,7 @@ const onSubmit = async (data) => {
   if (!session) return null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f8f6f3]">
+    <div className="min-h-screen flex flex-col bg-cream">
       <Navbar />
 
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
@@ -102,24 +102,24 @@ const onSubmit = async (data) => {
           {/* Back Link */}
           <Link
             href="/my-profile"
-            className="inline-flex items-center gap-2 text-[#6b6b6b] hover:text-[#2d2926] mb-6"
+            className="inline-flex items-center gap-2 text-ash hover:text-espresso mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Profile
           </Link>
 
           {/* Form Card */}
-          <div className="bg-white rounded-2xl shadow-lg border border-[#e0dcd6] p-6 sm:p-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#2d2926] mb-2">
+          <div className="bg-white rounded-2xl shadow-lg border border-tile-border p-6 sm:p-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-espresso mb-2">
               Update Profile
             </h1>
-            <p className="text-[#6b6b6b] mb-8">
+            <p className="text-ash mb-8">
               Update your personal information below
             </p>
 
             {/* Preview */}
-            <div className="flex items-center gap-4 mb-8 p-4 bg-[#f8f6f3] rounded-xl">
-              <div className="w-16 h-16 rounded-full bg-[#2d2926] overflow-hidden">
+            <div className="flex items-center gap-4 mb-8 p-4 bg-cream rounded-xl">
+              <div className="w-16 h-16 rounded-full bg-espresso overflow-hidden">
                 {photoURL ? (
                   <Image
                     src={photoURL}
@@ -130,17 +130,17 @@ const onSubmit = async (data) => {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-2xl font-bold text-[#c9a87c]">
+                    <span className="text-2xl font-bold text-gold">
                       {name?.charAt(0)?.toUpperCase() || "U"}
                     </span>
                   </div>
                 )}
               </div>
               <div>
-                <p className="font-medium text-[#2d2926]">
+                <p className="font-medium text-espresso">
                   {name || "Your Name"}
                 </p>
-                <p className="text-sm text-[#6b6b6b]">
+                <p className="text-sm text-ash">
                   {session.user.email}
                 </p>
               </div>
@@ -152,16 +152,16 @@ const onSubmit = async (data) => {
               {/* Name */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#2d2926] font-medium">
+                  <span className="label-text text-espresso font-medium">
                     Full Name
                   </span>
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                   <input
                     {...register("name", { required: true })}
                     placeholder="Enter your full name"
-                    className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6]"
+                    className="input input-bordered w-full pl-12 bg-white border-tile-border"
                   />
                 </div>
               </div>
@@ -169,17 +169,17 @@ const onSubmit = async (data) => {
               {/* Email */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#2d2926] font-medium">
+                  <span className="label-text text-espresso font-medium">
                     Email Address
                   </span>
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                   <input
                     type="email"
                     value={session.user.email}
                     disabled
-                    className="input input-bordered w-full pl-12 bg-[#f0ebe5]"
+                    className="input input-bordered w-full pl-12 bg-cream-muted"
                   />
                 </div>
               </div>
@@ -187,16 +187,16 @@ const onSubmit = async (data) => {
               {/* Photo URL */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[#2d2926] font-medium">
+                  <span className="label-text text-espresso font-medium">
                     Photo URL
                   </span>
                 </label>
                 <div className="relative">
-                  <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b6b6b] z-10" />
+                  <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ash z-10" />
                   <input
                     {...register("photoURL")}
                     placeholder="https://example.com/photo.jpg"
-                    className="input input-bordered w-full pl-12 bg-white border-[#e0dcd6]"
+                    className="input input-bordered w-full pl-12 bg-white border-tile-border"
                   />
                 </div>
               </div>
@@ -206,7 +206,7 @@ const onSubmit = async (data) => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="btn flex-1 bg-[#2d2926] text-white"
+                  className="btn flex-1 bg-espresso text-white"
                 >
                   {isLoading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -220,7 +220,7 @@ const onSubmit = async (data) => {
 
                 <Link
                   href="/my-profile"
-                  className="btn btn-outline border-[#e0dcd6]"
+                  className="btn btn-outline border-tile-border"
                 >
                   Cancel
                 </Link>

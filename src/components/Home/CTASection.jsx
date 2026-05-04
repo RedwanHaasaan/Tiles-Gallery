@@ -10,12 +10,12 @@ const CTASection = () => {
   const { ref: btnRef,  isVisible: btnVisible  } = useScrollReveal({ threshold: 0.2 })
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#2d2926] relative overflow-hidden">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-espresso relative overflow-hidden">
       {/* Decorative background pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div className="grid grid-cols-8 grid-rows-4 h-full w-full">
           {Array.from({ length: 32 }).map((_, i) => (
-            <div key={i} className="border border-[#c9a87c]" />
+            <div key={i} className="border border-gold" />
           ))}
         </div>
       </div>
@@ -49,14 +49,14 @@ const CTASection = () => {
         >
           <Link
             href="/register"
-            className="btn bg-[#c9a87c] text-white hover:bg-[#b8976b] border-none px-8 hover:scale-105 transition-transform duration-200"
+            className="btn bg-gold text-white hover:bg-gold-dark border-none px-8 hover:scale-105 transition-transform duration-200"
           >
             Create Account
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/tiles"
-            className="btn btn-outline border-white text-white hover:bg-white hover:text-[#2d2926] px-8 hover:scale-105 transition-transform duration-200"
+            className="btn btn-outline border-white text-white hover:bg-white hover:text-espresso px-8 hover:scale-105 transition-transform duration-200"
           >
             Browse Collection
           </Link>

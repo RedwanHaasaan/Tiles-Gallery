@@ -66,7 +66,7 @@ export default function FeaturedCarousel({ tiles }) {
                     activeIndex === idx ? 'slide-content-active' : 'slide-content-inactive'
                   }`}
                 >
-                  <span className="inline-block px-3 py-1 bg-[#c9a87c] text-[#2d2926] text-xs font-semibold rounded-full mb-4 animate__animated animate__bounceIn">
+                  <span className="inline-block px-3 py-1 bg-gold text-espresso text-xs font-semibold rounded-full mb-4 animate__animated animate__bounceIn">
                     {tile.category}
                   </span>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-balance">
@@ -76,12 +76,12 @@ export default function FeaturedCarousel({ tiles }) {
                     {tile.description}
                   </p>
                   <div className="flex items-center gap-4">
-                    <span className="text-2xl sm:text-3xl font-bold text-[#c9a87c]">
+                    <span className="text-2xl sm:text-3xl font-bold text-gold">
                       ${tile.price.toFixed(2)}
                     </span>
                     <Link
                       href={`/tile/${tile.id}`}
-                      className="btn bg-white text-[#2d2926] hover:bg-[#c9a87c] hover:text-white border-none transition-all duration-300 hover:scale-105"
+                      className="btn bg-white text-espresso hover:bg-gold hover:text-white border-none transition-all duration-300 hover:scale-105"
                     >
                       View Details
                       <ArrowRight className="w-4 h-4" />
@@ -97,15 +97,15 @@ export default function FeaturedCarousel({ tiles }) {
       {/* ── Custom Nav Buttons ── */}
       <button
         ref={prevRef}
-        className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-[#c9a87c] rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-gold rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 cursor-pointer"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#2d2926] hover:text-white" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-espresso hover:text-white" />
       </button>
       <button
         ref={nextRef}
-        className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-[#c9a87c] rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-gold rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 cursor-pointer"
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#2d2926] hover:text-white" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-espresso hover:text-white" />
       </button>
 
       {/* ── Thumbs Strip ── */}
@@ -124,7 +124,7 @@ export default function FeaturedCarousel({ tiles }) {
               <div
                 className={`relative w-full h-full cursor-pointer rounded-lg overflow-hidden transition-all duration-300 ${
                   activeIndex === idx
-                    ? 'ring-2 ring-[#c9a87c] opacity-100 scale-105'
+                    ? 'ring-2 ring-gold opacity-100 scale-105'
                     : 'opacity-60 hover:opacity-90'
                 }`}
               >

@@ -20,16 +20,16 @@ const CollectionSection = () => {
           }`}
         >
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#2d2926] mb-2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-espresso mb-2">
               Our Collection
             </h2>
-            <p className="text-[#6b6b6b]">
+            <p className="text-ash">
               Explore our latest and most popular tile designs
             </p>
           </div>
           <Link
             href="/tiles"
-            className="btn btn-ghost text-[#2d2926] hover:bg-[#e8e4df] hover:gap-3 transition-all duration-200"
+            className="btn btn-ghost text-espresso hover:bg-stone hover:gap-3 transition-all duration-200"
           >
             View All
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
