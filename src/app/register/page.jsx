@@ -41,9 +41,9 @@ export default function RegisterPage() {
         return;
       }
   
-      toast.success("Account created successfully!");
+      toast.success("Account created successfully. Please log in to continue.");
   
-      router.push("/");
+      router.push("/login");
       router.refresh();
   
     } catch (err) {
