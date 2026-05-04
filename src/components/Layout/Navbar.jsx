@@ -1,18 +1,34 @@
 "use client";
 
-import { Home, LayoutGrid, Menu, X } from "lucide-react";
+import { signOut, useSession } from "@/lib/auth-client";
+import { Home, LayoutGrid, LogIn, LogOut, Menu, User, UserPlus, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const { data: session, isPending } = useSession();
   const navLinks = [
-    { href: '/', label: 'Home', icon: Home },
-    { href: '/tiles', label: 'All Tiles', icon: LayoutGrid },
-  ]
+    { href: "/", label: "Home", icon: Home },
+    { href: "/tiles", label: "All Tiles", icon: LayoutGrid },
+  ];
+  const authLinks = session
+    ? [{ href: "/my-profile", label: "My Profile", icon: User }]
+    : [
+        { href: "/login", label: "Login", icon: LogIn },
+        { href: "/register", label: "Register", icon: UserPlus },
+      ];
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      toast.success("Signed out successfully");
+    } catch (error) {
+      toast.error("Failed to sign out");
+    }
+  };
   return (
     <nav className="bg-[#f8f6f3] border-b border-[#e0dcd6] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -41,7 +57,7 @@ const Navbar = () => {
                 href={link.href}
                 className="text-[#2d2926] font-medium hover:text-[#c9a87c] transition flex flex-row gap-2 items-center"
               >
-                <link.icon className="w-5 h-5"/>
+                <link.icon className="w-5 h-5" />
                 {link.label}
               </Link>
             ))}
@@ -49,18 +65,76 @@ const Navbar = () => {
 
           {/* RIGHT: Auth Buttons (Desktop) */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/login"
-              className="px-4 py-2 rounded-md text-[#2d2926] hover:bg-[#e8e4df]"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="px-4 py-2 rounded-md bg-[#2d2926] text-white hover:bg-black"
-            >
-              Register
-            </Link>
+            {isPending ? (
+              <span className="loading loading-spinner loading-sm text-[#2d2926]"></span>
+            ) : session ? (
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="flex items-center gap-2 cursor-pointer"
+                >
+                  <div className="avatar placeholder">
+                    <div className="bg-[#2d2926] text-[#c9a87c] rounded-full w-10">
+                      {session.user?.image ? (
+                        <Image
+                          src={session.user.image}
+                          alt={session.user.name || "User"}
+                          className="rounded-full"
+                          width={100}
+                          height={100}
+                        />
+                      ) : (
+                        <span className="text-sm font-medium">
+                          {session.user?.name?.charAt(0).toUpperCase() || "U"}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-[#2d2926] font-medium hidden lg:block">
+                    {session.user?.name || "User"}
+                  </span>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-1 menu p-2 shadow-lg bg-white rounded-lg w-52 mt-2 border border-[#e0dcd6]"
+                >
+                  <li>
+                    <Link
+                      href="/my-profile"
+                      className="flex items-center gap-2 text-[#2d2926] hover:bg-[#f0ebe5]"
+                    >
+                      <User className="w-4 h-4" />
+                      My Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleSignOut}
+                      className="flex items-center gap-2 text-[#2d2926] hover:bg-[#f0ebe5]"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="btn btn-ghost text-[#2d2926] hover:bg-[#e8e4df]"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="btn bg-[#2d2926] text-white hover:bg-[#1a1a1a] border-none"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
 
           {/* MOBILE MENU BUTTON */}
@@ -80,7 +154,7 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="px-4 py-3 text-[#2d2926] font-medium hover:bg-[#e8e4df] transition flex flex-row gap-2 items-center"
                 >
-                  <link.icon className="w-5 h-5"/>
+                  <link.icon className="w-5 h-5" />
                   {link.label}
                 </Link>
               ))}
@@ -88,21 +162,66 @@ const Navbar = () => {
 
             {/* AUTH SECTION */}
             <div className="border-t border-[#e0dcd6] px-4 py-3 flex flex-col gap-2">
-              <Link
-                href="/login"
-                onClick={() => setOpen(false)}
-                className="w-full py-2 text-center border border-[#2d2926] rounded-md text-[#2d2926] hover:bg-[#e8e4df] transition"
-              >
-                Login
-              </Link>
-
-              <Link
-                href="/register"
-                onClick={() => setOpen(false)}
-                className="w-full py-2 text-center rounded-md bg-[#2d2926] text-white hover:bg-[#1a1a1a] transition"
-              >
-                Register
-              </Link>
+            {isPending ? (
+                <div className="flex justify-center py-4">
+                  <span className="loading loading-spinner loading-sm text-[#2d2926]"></span>
+                </div>
+              ) : session ? (
+                <>
+                  <div className="px-4 py-2 flex items-center gap-3">
+                    <div className="avatar placeholder">
+                      <div className="bg-[#2d2926] text-[#c9a87c] rounded-full w-10">
+                        {session.user?.image ? (
+                          <Image
+                            src={session.user.image} 
+                            alt={session.user.name || 'User'} 
+                            className="rounded-full"
+                          />
+                        ) : (
+                          <span className="text-sm font-medium">
+                            {session.user?.name?.charAt(0).toUpperCase() || 'U'}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-[#2d2926] font-medium">
+                      {session.user?.name || 'User'}
+                    </span>
+                  </div>
+                  <Link
+                    href="/my-profile"
+                    className="flex items-center gap-3 px-4 py-3 text-[#2d2926] hover:bg-[#e8e4df] rounded-lg transition-colors"
+                    onClick={() => setOpen(false)}
+                  >
+                    <User className="w-5 h-5" />
+                    My Profile
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleSignOut()
+                      setOpen(false)
+                    }}
+                    className="flex items-center gap-3 px-4 py-3 text-[#2d2926] hover:bg-[#e8e4df] rounded-lg transition-colors text-left"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  {authLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-3 px-4 py-3 text-[#2d2926] hover:bg-[#e8e4df] rounded-lg transition-colors"
+                      onClick={() => setOpen(false)}
+                    >
+                      <link.icon className="w-5 h-5" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         )}
